@@ -1,7 +1,9 @@
 package java_chobo2.ch14.stream;
 
+import java.util.Arrays;
 import java.util.Optional;
 import java.util.OptionalInt;
+import java.util.stream.Stream;
 
 public class StreamOptionalEx {
 
@@ -36,8 +38,13 @@ public class StreamOptionalEx {
 		System.out.println("optInt1 = " + optInt1);
 		System.out.println("optInt2 = " + optInt2);
 		System.out.println("optInt1.equals(optInt2)?" + optInt1.equals(optInt2));
+		System.out.println();
 		
-		
+		Student[] stds = {new Student("bb", 1, 250), null, new Student("aa", 1, 150)};
+		Stream<Student> stdsStream = Arrays.stream(stds);
+		stdsStream.map(Optional::ofNullable)
+		.filter(s-> s.isPresent())
+		.forEach(System.out::println);
 	}
 
 }
