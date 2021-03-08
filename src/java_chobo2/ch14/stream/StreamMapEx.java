@@ -30,7 +30,6 @@ public class StreamMapEx {
 	public static void extracted02() {
 		List<Student> list = new ArrayList<>();
 		list.add(new Student("이자바", 3, 300));
-		list.add(new Student("이자바", 3, 300));
 		list.add(new Student("김자바", 1, 200));
 		list.add(new Student("안자바", 2, 100));
 		list.add(new Student("박자바", 2, 150));
