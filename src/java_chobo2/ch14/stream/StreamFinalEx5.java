@@ -82,11 +82,11 @@ public class StreamFinalEx5 {
 		
 		// 모든 학생을 세 등급(HIGH, MID, LOW)으로 Set 저장
 //		Map<Integer, Map<Integer, Set<Student2.Level>>> stdByLevel2 = 
-//				Stream.of(stuArr).collect(groupingBy(Student::getHak), groupingBy(Student::getBan,
+//				Stream.of(stuArr).collect(groupingBy(Student2::getHak), groupingBy(Student::getBan,
 //						mapping(s -> {
 //							if (s.getScore() >= 200)
 //								return Student2.Level.HIGH;
-//						}, downstream)))
+//						}, )));
 				
 	}
 
