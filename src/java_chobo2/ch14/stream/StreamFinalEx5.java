@@ -80,14 +80,34 @@ public class StreamFinalEx5 {
 		System.out.println("MID : " + stdByLevel.get(Level.MID));
 		System.out.println("LOW : " + stdByLevel.get(Level.LOW));
 		
+		
 		// 모든 학생을 세 등급(HIGH, MID, LOW)으로 Set 저장
-//		Map<Integer, Map<Integer, Set<Student2.Level>>> stdByLevel2 = 
-//				Stream.of(stuArr).collect(groupingBy(Student2::getHak), groupingBy(Student::getBan,
-//						mapping(s -> {
-//							if (s.getScore() >= 200)
-//								return Student2.Level.HIGH;
-//						}, )));
-				
+		Map<Integer, Map<Integer, Set<Level>>> stdByLevel2 = 
+				Stream.of(stuArr).collect(groupingBy(Student2::getHak, 
+						groupingBy(
+								Student2::getBan,
+									mapping(s -> {
+										if (s.getScore() >= 200)
+											return Level.HIGH;
+										else if (s.getScore() >= 100)
+											return Level.MID;
+										else 
+											return Level.LOW;
+									}, toSet())
+								) 
+						) // groupingBy()
+						); // collect()
+		
+		for (Entry<Integer, Map<Integer, Set<Level>>> e : stdByLevel2.entrySet()) {
+			System.out.println(e.getKey() + "학년");
+			for(Entry<Integer, Set<Level>> sub_e : e.getValue().entrySet()) {
+				System.out.println(sub_e.getKey() + "반");
+				for (Level l : sub_e.getValue()) {
+					System.out.println(l);
+				}
+			}
+		}
+	
 	}
 
 }
